@@ -1,0 +1,32 @@
+
+
+
+Links that i will use in this video :
+
+
+Titillium Font :
+
+https://fonts.googleapis.com/css?family=Titillium+Web:700
+
+
+
+JavaScript Files Source :
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/605067/OrbitControls.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/605067/GeometryUtils.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/605067/OBJLoaderFaces.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/605067/stats.js'></script>
+
+
+
+Particle Image Link : 
+
+https://motionarray.imgix.net/preview-34649aJ93evd9dG_0008.jpg?w=660&q=60&fit=max&auto=format
+
+
+
+Codepen Asset URL :
+
+https://s3-us-west-2.amazonaws.com/s.cdpn.io/605067/
