@@ -52,12 +52,14 @@ spacemanParticles = new THREE.Geometry();
 var pMaterial = new THREE.PointCloudMaterial({
     color: particleColor,
     size: particleSize,
+    /* THREE.ImageUtils <<< 더 이상 사용 안 하는 유틸??? */
     map: THREE.ImageUtils.loadTexture(particleImage),
+    // map: THREE.TextureLoader.loadTexture(particleImage),
     blending: THREE.AdditiveBlending,
     transparent: true
 });
 
-var geometry = new THREE.sphereGeometry(5, 30, 30);
+var geometry = new THREE.SphereGeometry(5, 30, 30);
 
 spherePoints = THREE.GeometryUtils.randomPointsInGeometry(geometry, particleCount);
 
@@ -95,7 +97,7 @@ objLoader.load('Astronaut.obj', function(object){
             let yOffset = (area.max.y * scale) / 2;
 
             child.geometry.scale(scale, scale, scale);
-            SpacemanPoints = THREE.GeometryUtils.randomPointsInBufferGeometry(child.geometry, particleCount);
+            spacemanPoints = THREE.GeometryUtils.randomPointsInBufferGeometry(child.geometry, particleCount);
             createVertices(spacemanParticles, spacemanPoints, yOffset, 3);
         }
     })
@@ -107,12 +109,12 @@ for(var p = 0; p < particleCount; p++){
     vertex.y = 0;
     vertex.z = 0;
 
-    particleColor.vertices.push(vertex);
+    particles.vertices.push(vertex);
 
 }
 
-createVertices(spherePaticles, spherePoints, null, null);
-createVertices(cubePaticles, cubePoints, null, 1);
+createVertices(sphereParticles, spherePoints, null, null);
+createVertices(cubeParticles, cubePoints, null, 1);
 
 function createVertices(emptyArray, points, yOffset = 0, trigger = null){
     for(var p = 0; p < particleCount; p++){
@@ -130,7 +132,7 @@ function createVertices(emptyArray, points, yOffset = 0, trigger = null){
 
 }
 
-var particleSystem = new THREE.pointCoud(
+var particleSystem = new THREE.PointCloud(
     particles,
     pMaterial
 );
@@ -185,9 +187,9 @@ function morphTo(newParticles, color = '0xffffff'){
         speed: fullSpeed,
         onComplete: slowDown
     });
-    particleSystem.material.color.setMax(color);
+    particleSystem.material.color.setHex(color);
 
-    for (var i = 0; i < particles.vertices.length; i++){
+    for (var i =0; i < particles.vertices.length; i++){
         TweenMax.to(particles.vertices[i], 4, {
             ease: Elastic.easeOut.config(1, 0.75),
             x: newParticles.vertices[i].x,
@@ -199,7 +201,7 @@ function morphTo(newParticles, color = '0xffffff'){
 }
 
 function slowDown(){
-    TweeMax.to(animaionVars, 4, {
+    TweenMax.to(animationVars, 4, {
         ease: Power2.easeOut,
         speed: normalSpeed,
         delay: 1
